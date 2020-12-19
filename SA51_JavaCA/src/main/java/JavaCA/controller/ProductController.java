@@ -27,8 +27,7 @@ import JavaCA.model.User;
 import JavaCA.service.BrandServiceImpl;
 import JavaCA.service.ProductServiceImpl;
 import JavaCA.service.SupplierServiceImpl;
-import JavaCA.service.TransactionDetailsInterface;
-import JavaCA.service.TransactionDetailsImpl;
+import JavaCA.service.TransactionDetailsService;
 import JavaCA.service.TransactionImplementation;
 
 @Controller
@@ -38,11 +37,11 @@ public class ProductController {
 	private BrandServiceImpl bservice;
 	private SupplierServiceImpl suppservice;
 	private TransactionImplementation tservice;
-	private TransactionDetailsInterface tdservice;
+	private TransactionDetailsService tdservice;
 	
 	@Autowired
 	public void setServices(ProductServiceImpl pservice, BrandServiceImpl bservice, 
-			SupplierServiceImpl suppservice, TransactionImplementation tservice, TransactionDetailsImpl tdservice) {
+			SupplierServiceImpl suppservice, TransactionImplementation tservice, TransactionDetailsService tdservice) {
 		this.pservice = pservice;
 		this.bservice = bservice;
 		this.suppservice = suppservice;
