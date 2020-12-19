@@ -10,7 +10,6 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.validation.constraints.Digits;
 import javax.validation.constraints.Min;
-import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
@@ -22,10 +21,10 @@ public class Product
 	private long id;
 	@ManyToOne
 	private Brand brand;
-	@NotBlank
+	@NotNull
 	@Size(min=2, max=50)
 	private String name, type, category, subcategory;
-	@NotBlank
+	@NotNull
 	@Size(min=2, max=200)
 	private String description;
 	@Min(0)
