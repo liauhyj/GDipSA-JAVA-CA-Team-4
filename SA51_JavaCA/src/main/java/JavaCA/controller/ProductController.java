@@ -51,7 +51,10 @@ public class ProductController {
 	}
 	
 	@InitBinder
-	protected void initBinder(WebDataBinder binder) {}
+	protected void initBinder(WebDataBinder binder) 
+	{
+		
+	}
 	
 	@RequestMapping(value={"","/list"}, method=RequestMethod.GET)
 	public String findAllProducts(Model model) {
@@ -93,9 +96,11 @@ public class ProductController {
 	public String saveProduct(@ModelAttribute("p") @Valid Product p, 
 			@RequestParam(value="editBrandName", required=false) Integer editBrandName,
 			@RequestParam(value="editSupplierName", required=false) Integer editSupplierName,
-			BindingResult bindingResult, Model model, HttpSession session) {
+			BindingResult bindingResult, Model model, HttpSession session) 
+	{
 		
-		if (bindingResult.hasErrors()) {
+		if (bindingResult.hasErrors()) 
+		{
 			ArrayList<Brand> brands = bservice.findAllBrands();
 			model.addAttribute("brands", brands);
 			ArrayList<Supplier> suppliers = suppservice.findAllSuppliers();
@@ -111,22 +116,24 @@ public class ProductController {
 		if (product!=null)
 		{
 			//if user requests to edit brand name for all products 
-			if(editBrandName==1) {
+			if(editBrandName==1) 
+			{
 				bservice.editBrandName(product.getBrand().getId(), p.getBrand().getName());
 			}			
 			
 			//if user requests to edit supplier name for all products
-			if(editSupplierName==1) {
+			if(editSupplierName==1) 
+			{
 				suppservice.editSupplierName(product.getSupplier().getId(), p.getSupplier().getSupplierName());
 			}
-			
 		}
 		
 		
 		//search for existing brand based on name
 		Brand b = bservice.findBrandByName(p.getBrand().getName());
 		//if no existing brand, create brand before setting into p
-		if(b==null) {
+		if(b==null) 
+		{
 			b = new Brand(p.getBrand().getName());
 			bservice.saveBrand(b);
 		}
@@ -135,7 +142,8 @@ public class ProductController {
 		//search for existing supplier based on name
 		Supplier s = suppservice.findSupplierByName(p.getSupplier().getSupplierName());
 		//if existing supplier exists, create supplier before setting into p
-		if(s==null) {
+		if(s==null) 
+		{
 			s = new Supplier(p.getSupplier().getSupplierName());
 			suppservice.saveSupplier(s);
 		}
@@ -146,9 +154,11 @@ public class ProductController {
 		
 		
 		//new product
-		if (product==null) {
+		if (product==null) 
+		{
 			//save first transaction if quantity >0
-			if(p.getQuantity()>0) {
+			if(p.getQuantity()>0) 
+			{
 				//get user from session to set into transaction
 				Transaction t = new Transaction();
 				User user = (User) session.getAttribute("usession");
