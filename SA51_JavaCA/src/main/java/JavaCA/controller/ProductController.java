@@ -24,24 +24,29 @@ import JavaCA.model.Transaction;
 import JavaCA.model.TransactionDetail;
 import JavaCA.model.TransactionType;
 import JavaCA.model.User;
+import JavaCA.service.BrandService;
 import JavaCA.service.BrandServiceImpl;
+import JavaCA.service.ProductService;
 import JavaCA.service.ProductServiceImpl;
+import JavaCA.service.SupplierService;
 import JavaCA.service.SupplierServiceImpl;
 import JavaCA.service.TransactionDetailsService;
-import JavaCA.service.TransactionImplementation;
+import JavaCA.service.TransactionDetailsServiceImpl;
+import JavaCA.service.TransactionService;
+import JavaCA.service.TransactionServiceImpl;
 
 @Controller
 @RequestMapping("/product")
 public class ProductController {
-	private ProductServiceImpl pservice;
-	private BrandServiceImpl bservice;
-	private SupplierServiceImpl suppservice;
-	private TransactionImplementation tservice;
+	private ProductService pservice;
+	private BrandService bservice;
+	private SupplierService suppservice;
+	private TransactionService tservice;
 	private TransactionDetailsService tdservice;
 	
 	@Autowired
 	public void setServices(ProductServiceImpl pservice, BrandServiceImpl bservice, 
-			SupplierServiceImpl suppservice, TransactionImplementation tservice, TransactionDetailsService tdservice) {
+			SupplierServiceImpl suppservice, TransactionServiceImpl tservice, TransactionDetailsServiceImpl tdservice) {
 		this.pservice = pservice;
 		this.bservice = bservice;
 		this.suppservice = suppservice;
