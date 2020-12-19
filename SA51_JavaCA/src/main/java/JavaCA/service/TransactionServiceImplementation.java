@@ -14,7 +14,7 @@ import JavaCA.repo.TransactionRepository;
 
 @Service
 @Transactional
-public class TransactionServiceImpl implements TransactionService
+public class TransactionServiceImplementation implements TransactionService
 {
 	@Autowired
 	private TransactionRepository transRepo;
@@ -41,7 +41,7 @@ public class TransactionServiceImpl implements TransactionService
 	}
 	
 	@Override
-	public boolean deleteTransaction(Transaction transaction)
+	public void deleteTransaction(Transaction transaction)
 	{
 		List<TransactionDetail> transDForThisTransaction = transaction.getTransactionDetails();
 		for (TransactionDetail td:transDForThisTransaction)
@@ -49,7 +49,6 @@ public class TransactionServiceImpl implements TransactionService
 			transDRepo.delete(td);
 		}
 		transRepo.delete(transaction);
-		return true;
 	}
 
 	@Override
